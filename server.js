@@ -4,6 +4,40 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import OpenAI from "openai";
+import os from "os";
+import { createWriteStream, existsSync, mkdirSync } from "fs";
+
+const LOG_DIR = "logs";
+const LOG_PATH = `${LOG_DIR}/queries.csv`;
+if (!existsSync(LOG_DIR)) mkdirSync(LOG_DIR);
+
+function csvEscape(s = "") {
+  const t = String(s).replaceAll('"', '""');
+  return /[",\n]/.test(t) ? `"${t}"` : t;
+}
+
+function appendLog(row) {
+  const header = [
+    "timestamp_iso","ip","user_agent","model","status",
+    "latency_ms","input_tokens","output_tokens","question","answer_preview"
+  ];
+  if (!existsSync(LOG_PATH)) {
+    createWriteStream(LOG_PATH, { flags: "a" }).write(header.join(",") + os.EOL);
+  }
+  const line = [
+    row.timestamp_iso,
+    row.ip,
+    row.user_agent,
+    row.model,
+    row.status,
+    row.latency_ms,
+    row.input_tokens ?? "",
+    row.output_tokens ?? "",
+    csvEscape(row.question),
+    csvEscape((row.answer_preview ?? "").slice(0, 200))
+  ].join(",") + os.EOL;
+  createWriteStream(LOG_PATH, { flags: "a" }).write(line);
+}
 
 // ESM-compatible __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -86,28 +120,65 @@ ${CLUB_KB}
 
 // --- Chat endpoint ---
 app.post("/chat", requireKey, async (req, res) => {
-  try {
-    const question = String(req.body?.question ?? "").slice(0, 4000);
-    if (!question) return res.status(400).json({ error: "Missing 'question'." });
+  const t0 = Date.now();
+  const question = String(req.body?.question ?? "").slice(0, 4000);
+  if (!question) return res.status(400).json({ error: "Missing 'question'." });
 
+  const ip = req.headers["x-forwarded-for"]?.toString().split(",")[0]?.trim() || req.socket.remoteAddress || "";
+  const ua = req.headers["user-agent"] || "";
+
+  try {
     const r = await client.responses.create({
       model: "gpt-4o-mini",
       instructions: buildInstructions(),
       input: question,
       temperature: 0.3,
-      max_output_tokens: 350,
+      max_output_tokens: 350
     });
 
-    const text = r.output_text || "Sorry, try again.";
-    res.json({ answer: text });
+    const answer = r.output_text || "Sorry, try again.";
+
+    // optional usage fields if present
+    const usage = r.usage || {};
+    appendLog({
+      timestamp_iso: new Date().toISOString(),
+      ip, user_agent: ua,
+      model: "gpt-4o-mini",
+      status: "ok",
+      latency_ms: Date.now() - t0,
+      input_tokens: usage.input_tokens,
+      output_tokens: usage.output_tokens,
+      question,
+      answer_preview: answer
+    });
+
+    res.json({ answer });
   } catch (err) {
-    // Helpful diagnostics
-    const status = err?.status || 500;
-    const code = err?.code || err?.error?.code || "internal_error";
-    console.error("OpenAI error:", status, code, err?.message || err);
+    appendLog({
+      timestamp_iso: new Date().toISOString(),
+      ip, user_agent: ua,
+      model: "gpt-4o-mini",
+      status: "error",
+      latency_ms: Date.now() - t0,
+      question,
+      answer_preview: (err?.message || "").slice(0, 200)
+    });
     res.status(500).json({ error: "Server error" });
   }
+}); 
+
+function requireAdmin(req, res, next) {
+  const header = req.headers.authorization || "";
+  const incoming = header.startsWith("Bearer ") ? header.slice(7) : "";
+  if (!incoming || incoming !== process.env.ADMIN_KEY) return res.status(401).send("Unauthorized");
+  next();
+}
+
+app.get("/admin/queries.csv", requireAdmin, (req, res) => {
+  res.type("text/csv");
+  res.sendFile(path.resolve(LOG_PATH));
 });
+
 
 // --- Tiny UI (served by the same server) ---
 app.get("/", (_, res) => {
