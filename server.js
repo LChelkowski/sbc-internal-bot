@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-
 // --- Load KB at startup & hot-reload when file changes ---
 const KB_PATH = path.resolve("club_faq.md");
 let CLUB_KB = fs.existsSync(KB_PATH) ? fs.readFileSync(KB_PATH, "utf8") : "";
