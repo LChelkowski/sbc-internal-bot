@@ -40,12 +40,28 @@ app.get("/health", (_, res) => res.json({ ok: true }));
 
 // --- Build instructions per request so hot-reloaded KB is included ---
 function buildInstructions() {
+  // Resolve "today/this week/next week" in America/New_York
+  const now = new Date();
+  const todayNY = new Date(
+    now.toLocaleString("en-US", { timeZone: "America/New_York" })
+  ).toLocaleString("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  });
+
   return `
 You are SBC Cornell’s internal FAQ assistant.
+Today's date (America/New_York) is: ${todayNY}.
 Use the information below to answer confidently.
 
+If a question references relative time (e.g., "this week", "today", "tomorrow", "next week"),
+resolve it using the date above.
+
 If the question isn’t covered, give a short, cheeky, lighthearted reply that makes members smile.
-Examples to vary: 
+Examples to vary:
 - "That’s above my pay grade — maybe the coffee machine in Mann Library knows."
 - "If I knew that, I’d already be a partner at McKinsey."
 - "Sounds like a slide deck waiting to happen."
