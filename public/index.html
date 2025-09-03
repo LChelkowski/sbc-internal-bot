@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SBC Internal Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-slate-900 text-white p-4 flex items-center gap-3 shadow">
+    <div class="h-10 w-10 rounded-xl bg-white text-slate-900 grid place-items-center font-bold">SBC</div>
+    <div>
+      <h1 class="text-lg font-semibold">SBC Internal FAQ Bot</h1>
+      <p class="text-xs text-slate-300">Recruitment & Events Helper</p>
+    </div>
+  </header>
+
+  <!-- Chat area -->
+  <main id="chat" class="flex-1 overflow-y-auto p-4 space-y-3"></main>
+
+  <!-- Input area -->
+  <footer class="border-t bg-white p-3">
+    <div class="flex gap-2">
+      <textarea id="q" rows="1" placeholder="Type your question..." 
+        class="flex-1 resize-none rounded-xl border px-3 py-2 focus:ring focus:ring-slate-300"></textarea>
+      <button id="ask" 
+        class="rounded-xl bg-slate-900 text-white px-5 py-2 hover:bg-slate-800 transition">Ask</button>
+    </div>
+    <div class="mt-2">
+      <input id="key" type="password" placeholder="Access key" 
+        class="rounded-xl border px-3 py-1 text-sm"/>
+      <button id="saveKey" class="ml-2 text-sm text-slate-600 hover:underline">Save Key</button>
+    </div>
+  </footer>
+
+  <script>
+    const chat = document.getElementById('chat');
+    const q = document.getElementById('q');
+    const askBtn = document.getElementById('ask');
+    const keyInput = document.getElementById('key');
+    const saveKeyBtn = document.getElementById('saveKey');
+
+    keyInput.value = localStorage.getItem('sbc_key') || '';
+    saveKeyBtn.onclick = () => { localStorage.setItem('sbc_key', keyInput.value); };
+
+    function bubble(role, text) {
+      const wrap = document.createElement('div');
+      wrap.className = 'flex ' + (role === 'user' ? 'justify-end' : 'justify-start');
+      const b = document.createElement('div');
+      b.className = (role === 'user')
+        ? 'bg-slate-900 text-white px-4 py-2 rounded-2xl max-w-[70%] animate-fadeIn'
+        : 'bg-slate-200 text-slate-900 px-4 py-2 rounded-2xl max-w-[70%] animate-fadeIn';
+      b.textContent = text;
+      wrap.appendChild(b);
+      chat.appendChild(wrap);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    async function send() {
+      const key = localStorage.getItem('sbc_key') || keyInput.value;
+      const question = q.value.trim();
+      if (!question) return;
+      bubble('user', question);
+      q.value = '';
+      bubble('bot', 'Thinking…');
+
+      try {
+        const res = await fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key },
+          body: JSON.stringify({ question })
+        });
+        const data = await res.json();
+        chat.lastChild.firstChild.textContent = data.answer || data.error || 'No answer.';
+      } catch {
+        chat.lastChild.firstChild.textContent = "⚠️ Error talking to the server.";
+      }
+    }
+
+    askBtn.onclick = send;
+    q.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+    });
+  </script>
+
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    .animate-fadeIn { animation: fadeIn 0.2s ease-out; }
+  </style>
+</body>
+</html>

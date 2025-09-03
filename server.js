@@ -4,6 +4,11 @@ import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
 
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, "public")));
+
+
 const app = express();
 app.use(express.json());
 
@@ -35,8 +40,6 @@ function requireKey(req, res, next) {
   }
   next();
 }
-
-app.get("/health", (_, res) => res.json({ ok: true }));
 
 // --- Build instructions per request so hot-reloaded KB is included ---
 function buildInstructions() {
