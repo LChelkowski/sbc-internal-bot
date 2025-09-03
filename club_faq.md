@@ -44,7 +44,7 @@ A: Encourage them — many strong members were accepted on their 2nd or 3rd try.
 A: Sophomore Internship Panel, 5–7 PM, Malott 251.
 
 **Q: What happens at Social Impact Consulting 101?**  
-A: Educational session for prospective members, Sept 3, 6–7:30 PM, Physical Sciences 120.
+A: Educational session for prospective members, Sept 3, 6–7:30 PM, Physical Sciences 120. Extended EBoard Only!
 
 **Q: What is the Consulting Crash Course?**  
 A: Workshop co-hosted with other orgs, Sept 9, 5:30–6:30 PM, location TBA.
@@ -53,7 +53,7 @@ A: Workshop co-hosted with other orgs, Sept 9, 5:30–6:30 PM, location TBA.
 A: Sept 10, 7–8 PM, location TBA.
 
 **Q: When is the Freshman Recruitment Event?**  
-A: Sept 11, 6–7 PM, RPCC 106.
+A: Sept 11, 6–7 PM, RPCC 106. Sophomores + EBoard Only!
 
 **Q: When is Club Fest?**  
 A: Sept 13, 12–1:30 PM, Arts Quad.
@@ -242,5 +242,8 @@ A: Would it be any fun without them?
 
 **Q: How do I help recruitment?**  
 A: Be active in coffee chats, come to events, and buy Ella food!
+
+**Q: What information do you have on Wine Tour?**  
+A: Sunday, 1:30-3:30 PM at Catharine Valley! Don't forget to Venmo Owen -- check slack for more details!
 
 # End of Internal FAQ
