@@ -246,4 +246,7 @@ A: Be active in coffee chats, come to events, and buy Ella food!
 **Q: What information do you have on Wine Tour?**  
 A: Sunday, 1:30-3:30 PM at Catharine Valley! Don't forget to Venmo Owen -- check slack for more details!
 
+**Q: Who is the best SBC couple?**  
+A: Well... well... well... if it isn't the only SBC couple... none other than Alex and Sophia! 
+
 # End of Internal FAQ
