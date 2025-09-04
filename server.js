@@ -6,6 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import OpenAI from "openai";
 import os from "os";
+import { google } from "googleapis";
+
 
 // -------- Basics / paths --------
 const __filename = fileURLToPath(import.meta.url);
@@ -41,22 +43,36 @@ function csvEscape(s = "") {
   const t = String(s).replaceAll('"', '""');
   return /[",\n]/.test(t) ? `"${t}"` : t;
 }
-function appendLog(row) {
-  const line = [
-    row.timestamp_iso ?? new Date().toISOString(),
-    row.ip ?? "",
-    row.user_agent ?? "",
-    row.model ?? "",
-    row.status ?? "",
-    row.latency_ms ?? "",
-    row.input_tokens ?? "",
-    row.output_tokens ?? "",
-    csvEscape(row.question ?? ""),
-    csvEscape((row.answer_preview ?? "").slice(0, 200)),
-  ].join(",") + os.EOL;
+// ===== Google Sheets setup =====
+const auth = new google.auth.GoogleAuth({
+  credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON || "{}"),
+  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+});
+const sheets = google.sheets({ version: "v4", auth });
 
-  if (!logStream.write(line)) {
-    logStream.once("drain", () => {});
+// Replace your current appendLog implementation with this:
+async function appendLog(row) {
+  try {
+    const values = [[
+      new Date().toISOString(),
+      row.ip || "",
+      row.user_agent || "",
+      row.model || "",
+      row.status || "",
+      row.latency_ms ?? "",
+      row.input_tokens ?? "",
+      row.output_tokens ?? "",
+      (row.question ?? "").toString(),
+      (row.answer_preview ?? "").toString().slice(0, 200),
+    ]];
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.SHEET_ID,
+      range: "A1",
+      valueInputOption: "RAW",
+      requestBody: { values },
+    });
+  } catch (e) {
+    console.error("Failed to append to Google Sheet:", e?.message || e);
   }
 }
 
@@ -161,7 +177,7 @@ app.post("/chat", markAuth, async (req, res) => {
   try {
     const r = await client.responses.create({
       model: "gpt-4o-mini",
-      instructions: buildInstructions(),
+      instructions: buildInstructions(question), // pass it in
       input: question,
       temperature: 0.3,
       max_output_tokens: 350,
