@@ -249,4 +249,7 @@ A: Sunday, 1:30-3:30 PM at Catharine Valley! Don't forget to Venmo Owen -- check
 **Q: Who is the best SBC couple?**  
 A: Well... well... well... if it isn't the only SBC couple... none other than Alex and Sophia! 
 
+**Q: Do I have to go to all mandatory events?**  
+A: Yes, if you don't, Ella will kill you. :) 
+
 # End of Internal FAQ
