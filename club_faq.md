@@ -255,4 +255,8 @@ A: Yes, if you don't, Ella will kill you. :)
 **Q: If I missed a recruitment event for the performative male contest, is that acceptable?**  
 A: Of course it is, but only if your name is Mo! Everyone else -- jail!
 
+**Q: What do I do if I have a conflict or can't make an event?**  
+A: Fill this form out! (https://docs.google.com/forms/d/e/1FAIpQLSdAzD15t90pPjl0czmYIn0sT19ZRXHkA-Ssk9-AA6ax8qxj6w/viewform) 
+
+
 # End of Internal FAQ
