@@ -4,6 +4,64 @@ This knowledge base is for **internal SBC members** to guide consistent messagin
 
 ---
 
+## Website / Structure
+
+Skip to Main Content  
+SBC Logo.png  
+Home | Clients | Our Team | Resources | Contact Us | Apply  
+
+### Executive Board
+- **Trisha Saini** — Executive Director  
+- **Shiv Goel** — Director of Professional Development  
+- **Mohamed Kane** — Director of External Affairs  
+- **Ella Gottlieb** — Director of Operations  
+- **Owen Spargo** — Director of Culture and Outreach  
+
+### Project Managers
+- **Shrayes Gunna**  
+- **Reya Yeddula**  
+- **Milo Borek**  
+- **Henry Fried**  
+- **Abhinav Chellury**  
+
+### New Member Educators
+- **Nathaniel Cain**  
+- **Sofia Soares dos Santos**  
+
+### Capabilities Leaders
+- **Liam Chelkowski**  
+- **Michael Lee**  
+- **Jordan Rosenberg**  
+
+### Consultants
+- **Helena Xie**  
+- **Andrew Chun**  
+- **Alexis Kim**  
+- **Chris Lee**  
+- **Danielle Mazlish**  
+- **Jasmine Shi**  
+- **Sophia Oh**  
+- **Theo Berk**  
+- **Alex Rahaman**  
+- **Ed Fang**  
+- **Annika Shekdar**  
+- **Taeyoung Kim**  
+- **Sarvagna Malladi**  
+- **Elie Ntakirutimana**  
+- **Sarvesh Prabhu**
+
+### Social Links
+- Instagram  
+- LinkedIn  
+- Facebook  
+
+© Social Business Consulting 2025  
+Designed by Michael Wenye Li  
+Registered Student Organization of Cornell University  
+Equal Education and Employment  
+
+---
+
 ## Applications & Process (internal notes)
 
 **Q: When do applications open?**  
@@ -115,7 +173,7 @@ A: Don’t promise admission, don’t give exact acceptance rates, don’t speak
 A: Yes — share personal growth, favorite projects, and the supportive culture.
 
 **Q: Where is the coffee chat form?**  
-A: (https://docs.google.com/forms/d/e/1FAIpQLSfubXTpHPb80eKHplOTKIyDLLN7bJhdjU3WOM47q-WhLXBaAQ/viewform)
+A: [Coffee Chat Form](https://docs.google.com/forms/d/e/1FAIpQLSfubXTpHPb80eKHplOTKIyDLLN7bJhdjU3WOM47q-WhLXBaAQ/viewform)
 
 ---
 
@@ -156,7 +214,7 @@ A: Competitive, but emphasize that passion for social impact and commitment matt
 A: Collaborative, inclusive, tight-knit community, mentorship.
 
 **Q: Should we talk about socials?**  
-A: Yes, highlight that SBC members bond through retreats, dinners, and events. Be professional, i.e. don't mention getting wasted... 
+A: Yes, highlight that SBC members bond through retreats, dinners, and events. Be professional (no “party hard” talk).
 
 ---
 
@@ -172,7 +230,7 @@ A: Never badmouth other orgs, professors, or classmates.
 A: Direct them to the Ops team or the website.
 
 **Q: Should members post about recruitment on social media?**  
-A: Yes, make sure to repost on your instagram stories all information from the official SBC account.
+A: Yes, repost info from the official SBC account.
 
 **Q: Can members share internal timelines externally?**  
 A: No — share only what is public-facing.
@@ -227,12 +285,14 @@ A:
 - Sakib Jamal ’19 — VP at Crossbeam, Forbes 30U30  
 - Rahkeem Morris ’10 — Founder of HourWork, ex-GE & Google, HBS MBA  
 - Anderson Sumarli ’14 — Co-founder of unicorn Ajaib  
-- Shaibyaa Rajbhandari ’18 — Stanford MBA, ex-McKinsey
+- Shaibyaa Rajbhandari ’18 — Stanford MBA, ex-McKinsey  
 
 **Q: How should we frame alumni outcomes?**  
 A: As diverse — consulting, finance, tech, startups, grad school.
 
 ---
+
+## Fun / Easter Eggs
 
 **Q: Who is the best member?**  
 A: Liam, duh.
@@ -244,19 +304,20 @@ A: Would it be any fun without them?
 A: Be active in coffee chats, come to events, and buy Ella food!
 
 **Q: What information do you have on Wine Tour?**  
-A: Sunday, 1:30-3:30 PM at Catharine Valley! Don't forget to Venmo Owen -- check slack for more details!
+A: Sunday, 1:30–3:30 PM at Catharine Valley! Don’t forget to Venmo Owen — check Slack for more details!
 
 **Q: Who is the best SBC couple?**  
-A: Well... well... well... if it isn't the only SBC couple... none other than Alex and Sophia! 
+A: None other than Alex and Sophia! 
 
 **Q: Do I have to go to all mandatory events?**  
-A: Yes, if you don't, Ella will kill you. :) 
+A: Yes, if you don’t, Ella will kill you. :)  
 
 **Q: If I missed a recruitment event for the performative male contest, is that acceptable?**  
-A: Of course it is, but only if your name is Mo! Everyone else -- jail!
+A: Of course it is — but only if your name is Mo! Everyone else → jail!
 
 **Q: What do I do if I have a conflict or can't make an event?**  
-A: Fill this form out! (https://docs.google.com/forms/d/e/1FAIpQLSdAzD15t90pPjl0czmYIn0sT19ZRXHkA-Ssk9-AA6ax8qxj6w/viewform) 
+A: Fill this form out! [Conflict Form](https://docs.google.com/forms/d/e/1FAIpQLSdAzD15t90pPjl0czmYIn0sT19ZRXHkA-Ssk9-AA6ax8qxj6w/viewform)
 
+---
 
 # End of Internal FAQ
