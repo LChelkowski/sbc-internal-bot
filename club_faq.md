@@ -252,4 +252,7 @@ A: Well... well... well... if it isn't the only SBC couple... none other than Al
 **Q: Do I have to go to all mandatory events?**  
 A: Yes, if you don't, Ella will kill you. :) 
 
+**Q: If I missed a recruitment event for the performative male contest, is that acceptable?**  
+A: Of course it is, but only if your name is Mo! Everyone else -- jail!
+
 # End of Internal FAQ
